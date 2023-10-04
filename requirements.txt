@@ -1,4 +1,5 @@
-scikit-learn>=1.1
-opencv-python>=4.8.1.78
-pip install opencv-python
+sklearn>=0.24.2
+opencv>=4.5.3
+
+
 

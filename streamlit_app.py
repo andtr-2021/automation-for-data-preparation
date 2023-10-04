@@ -2,7 +2,6 @@ import streamlit as st
 import zipfile
 import os
 import shutil
-import os 
 import pandas as pd
 import numpy as np
 import cv2
