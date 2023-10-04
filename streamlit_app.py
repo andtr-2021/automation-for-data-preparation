@@ -7,19 +7,26 @@ import pandas as pd
 import numpy as np
 import cv2
 from sklearn.model_selection import train_test_split
-import warnings
+
+# set the title to be blue color
 st.title("Automation for Data Preparation")
 
 # change color to red
-st.write("This app offers a simple way to automate data preparation for machine learning.")
+st.write("`- This app will automate data preparation to make it easier to handled by different ML libraries.`")
+
+st.write(" ")
+
+st.write("`- Online datasets are usually in the common format. However, different ML libraries require different formats. This app will help you to convert the common format to the converted format.`")
+
+# draw a divider
+st.write("---")
 
 # create 2 columns
 col1, col2 = st.columns(2)
 
 # column 1
 with col1:
-    st.subheader("**Default Format**")
-    st.write("Usually, online image datasets are in this kind of format:")
+    st.write("**Common Format:**")
     st.write("- root\n"
              "  - class1\n"
              "    - image1.jpg\n"
@@ -38,8 +45,7 @@ with col1:
 # column 2
 with col2:
     # make the text bold
-    st.subheader("**New Format**")
-    st.write("**This app will create a new folder following structure:**")
+    st.write("**Converted Format:**")
     st.write("- root\n"
                 "  - train\n"
                 "    - class1\n"
@@ -56,15 +62,21 @@ with col2:
                 "    - class2\n"
                 "       - image1.jpg\n")
 
+
+st.write("---")
+
 # input folder
-st.write("### Input Folder")
-st.write("Please update a zip file containing images in the default format.")
-input_zip_file = st.file_uploader("Upload a zip file", type=["zip"])
+st.write("Please update a folder containing images in the default format as a zip file.")
+input_zip_file = st.file_uploader("", type=["zip"])
 
 default_folder = 'input_folder'
+
 X = []
 y = []
 
+# add some space
+st.write(" ")
+st.write(" ")
 
 # unzip the input folder
 if st.button("Transform"):
@@ -73,8 +85,6 @@ if st.button("Transform"):
 
         with zipfile.ZipFile(input_zip_file, 'r') as zip_ref:
              zip_ref.extractall('input_folder')
-
-        st.write("Unzip the zip file successfully.")
 
         # transform the folder
         # check the folder structure to see if it is in the default format
@@ -151,11 +161,6 @@ if st.button("Transform"):
 
         # zip the folder
         shutil.make_archive('output_folder', 'zip', 'output')
-        st.write('Zip the folder successfully.')
-
-        # download the zip file
-        st.write('### Download the zip file')
-        st.write('Please click the button below to download the zip file.')
 
         def get_binary_file_downloader_html(bin_file, file_label='File'):
             with open(bin_file, 'rb') as f:
@@ -163,8 +168,12 @@ if st.button("Transform"):
             bin_str = data
             href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{bin_file}">{file_label}</a>'
             return href
-
        
-        st.markdown(get_binary_file_downloader_html('output_folder.zip', 'Zip File'), unsafe_allow_html=True) 
-                            
+        get_binary_file_downloader_html('output_folder.zip', 'Zip File')
+
+        st.write("Download the zip file successfully.")
+
+
+
+    
 
