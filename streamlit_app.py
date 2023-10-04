@@ -116,6 +116,24 @@ for i in range(len(X_test)):
     curr_path = os.path.join(output_folder, 'test', y_test[i], str(i) + '.jpg')
     cv2.imwrite(curr_path, X_test[i])
 
-print('Done')
+st.write('Transform the folder successfully.')
+
+# zip the folder
+shutil.make_archive('output_folder', 'zip', 'output')
+st.write('Zip the folder successfully.')
+
+# download the zip file
+st.write('### Download the zip file')
+st.write('Please click the button below to download the zip file.')
+
+def get_binary_file_downloader_html(bin_file, file_label='File'):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    bin_str = data
+    href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{bin_file}">{file_label}</a>'
+    return href
+
+if st.button("Download"):
+    st.markdown(get_binary_file_downloader_html('output_folder.zip', 'Zip File'), unsafe_allow_html=True)
    
 
