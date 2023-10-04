@@ -164,7 +164,7 @@ if st.button("Transform"):
             href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{bin_file}">{file_label}</a>'
             return href
 
-        if st.button("Download"):
-            st.markdown(get_binary_file_downloader_html('output_folder.zip', 'Zip File'), unsafe_allow_html=True)
+       
+        st.markdown(get_binary_file_downloader_html('output_folder.zip', 'Zip File'), unsafe_allow_html=True) 
                             
 
