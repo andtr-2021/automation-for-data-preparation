@@ -1,5 +1,7 @@
 # automation-for-data-preparation
 
+This app is used for transforming the dataset structure to make the data preparation step easier. 
+
 ### App UI: 
 
 <img width="734" alt="Screenshot 2023-10-05 at 17 03 29" src="https://github.com/andtr-2021/automation-for-data-preparation/assets/79509067/59bca7de-c4f7-40b5-a494-b3b60a25198d">
